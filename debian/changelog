@@ -1,3 +1,54 @@
+scrot (0.8-6) unstable; urgency=low
+
+  * corrected typos. Reported by Martin Pool. Thanks. Closes: #233835
+  * removed "(s)" from debian/copyright, lintian warning
+
+ -- Laurence J. Lane <ljlane@debian.org>  Fri, 20 Feb 2004 13:12:04 -0500
+
+scrot (0.8-5) unstable; urgency=low
+
+  * removed -lfreetype and other extra linker flags
+  * update to Standards-Version: 3.6.1.0
+
+ -- Laurence J. Lane <ljlane@debian.org>  Tue, 28 Oct 2003 20:26:39 -0500
+
+scrot (0.8-4) unstable; urgency=low
+
+  * src/Makefile*: replace @IMLIB2LIBS@ and @GIBLIBS@ with -lgiblib
+
+ -- Laurence J. Lane <ljlane@debian.org>  Tue, 28 Oct 2003 19:31:37 -0500
+
+scrot (0.8-3) unstable; urgency=low
+
+  * src/Makefile.in: strip -ttf from scrot_LDADD, temp hack for mips*
+
+ -- Laurence J. Lane <ljlane@debian.org>  Mon, 20 Oct 2003 23:13:50 -0400
+
+scrot (0.8-2) unstable; urgency=low
+
+  * shooting rubberbands at arm, mips and mipsel build failures
+
+ -- Laurence J. Lane <ljlane@debian.org>  Sun, 19 Oct 2003 14:00:48 -0400
+
+scrot (0.8-1) unstable; urgency=low
+
+  * New upstream release
+  * converted to CDBS 
+
+ -- Laurence J. Lane <ljlane@debian.org>  Fri, 26 Sep 2003 00:03:06 -0400
+
+scrot (0.7-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Laurence J. Lane <ljlane@debian.org>  Fri, 28 Feb 2003 00:23:01 -0500
+
+scrot (0.6-2) unstable; urgency=low
+
+  * maintenance update: debhelper version, standards version, etc
+
+ -- Laurence J. Lane <ljlane@debian.org>  Fri, 22 Nov 2002 04:00:16 -0500
+
 scrot (0.6-1) unstable; urgency=low
 
   * New upstream release
