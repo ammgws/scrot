@@ -3,7 +3,7 @@ Section: graphics
 Priority: optional
 Maintainer: Laurence J. Lane <ljlane@debian.org>
 Standards-Version: 3.5.8.0
-Build-Depends: libimlib2-dev, xlibs-dev, giblib-dev, cdbs, debhelper (>=4.1.0)
+Build-Depends: libimlib2-dev, giblib-dev, cdbs, debhelper (>=4.1.0)
 
 Package: scrot
 Architecture: any

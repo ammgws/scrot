@@ -1,3 +1,9 @@
+scrot (0.8-7) unstable; urgency=low
+
+  * removed build dependency on xlibs-dev
+
+ -- Laurence J. Lane <ljlane@debian.org>  Mon,  9 Jan 2006 00:10:21 -0500
+
 scrot (0.8-6) unstable; urgency=low
 
   * corrected typos. Reported by Martin Pool. Thanks. Closes: #233835
