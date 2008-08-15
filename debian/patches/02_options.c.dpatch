@@ -1,0 +1,27 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 02_options.c.dpatch by William Vera <billy@billy.com.mx>
+##
+## DP: A little fix for wrong words.
+
+@DPATCH@
+diff -urNad scrot-0.8~/src/options.c scrot-0.8/src/options.c
+--- scrot-0.8~/src/options.c	2003-06-23 07:09:08.000000000 -0500
++++ scrot-0.8/src/options.c	2008-10-27 22:06:20.000000000 -0600
+@@ -229,7 +229,7 @@
+            "                            low quality means high compression.\n"
+            "  -m, --multidisp           For multiple heads, grab shot from each\n"
+            "                            and join them together.\n"
+-           "  -s, --select              interactively choose a window or rectnagle\n"
++           "  -s, --select              interactively choose a window or rectangle\n"
+            "                            with the mouse\n"
+            "  -t, --thumb NUM           generate thumbnail too. NUM is the percentage\n"
+            "                            of the original size for the thumbnail to be,\n"
+@@ -238,7 +238,7 @@
+            "  Both the --exec and filename parameters can take format specifiers\n"
+            "  that are expanded by " PACKAGE " when encountered.\n"
+            "  There are two types of format specifier. Characters preceded by a '%%'\n"
+-           "  are interpretted by strftime(2). See man strftime for examples.\n"
++           "  are interpreted by strftime(2). See man strftime for examples.\n"
+            "  These options may be used to refer to the current date and time.\n"
+            "  The second kind are internal to " PACKAGE
+            "  and are prefixed by '$'\n"
