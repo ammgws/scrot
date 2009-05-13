@@ -2,7 +2,7 @@ Source: scrot
 Section: graphics
 Priority: optional
 Maintainer: William Vera <billy@billy.com.mx>
-Standards-Version: 3.8.0
+Standards-Version: 3.8.1
 Build-Depends: libimlib2-dev, giblib-dev, debhelper (>=7.0.17), autotools-dev, dpatch, libtool
 Homepage: http://linuxbrit.co.uk/downloads/
 

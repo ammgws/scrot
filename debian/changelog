@@ -1,3 +1,11 @@
+scrot (0.8-9) unstable; urgency=low
+
+  * Changed the description on manpage (Closes: #469914).
+  * Updated the Standards-Version to 3.8.1.
+  * Fixed deprecated dh_clean -k in debian/rules file.
+
+ -- William Vera <billy@billy.com.mx>  Wed, 13 May 2009 06:48:15 -0500
+
 scrot (0.8-8) unstable; urgency=low
 
   * New maintainer (Closes: #492502).

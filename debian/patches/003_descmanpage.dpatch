@@ -1,0 +1,17 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 003_descmanpage.dpatch by William Vera <billy@billy.com.mx>
+##
+## DP: Change the description on manpage.
+
+@DPATCH@
+diff -urNad scrot-0.8~/scrot.1 scrot-0.8/scrot.1
+--- scrot-0.8~/scrot.1	2001-01-11 11:43:06.000000000 -0600
++++ scrot-0.8/scrot.1	2009-05-13 06:44:15.000000000 -0500
+@@ -1,6 +1,6 @@
+ .TH scrot 1 "Oct 26, 2000"
+ .SH NAME
+-scrot - Screen capture using imlib2
++scrot - capture a screenshot using imlib2
+ .SH SYNOPSIS
+ scrot [options] [file]
+ .SH DESCRIPTION
