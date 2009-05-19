@@ -1,3 +1,5 @@
 01_manpagefix.dpatch
 02_options.c.dpatch
 003_descmanpage.dpatch
+04-focused.dpatch
+05-addfocusedmanpage.dpatch

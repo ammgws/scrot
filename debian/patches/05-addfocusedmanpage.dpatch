@@ -1,0 +1,19 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 05-addfocusedmanpage.dpatch by William Vera <billy@billy.com.mx>
+##
+## DP: Add a new option in the man page (focused option).
+
+@DPATCH@
+diff -urNad scrot-0.8~/scrot.1 scrot-0.8/scrot.1
+--- scrot-0.8~/scrot.1	2009-05-19 09:33:05.000000000 -0500
++++ scrot-0.8/scrot.1	2009-05-19 09:37:44.000000000 -0500
+@@ -43,6 +43,9 @@
+ .B -s, --select
+ Interactively select a window or rectangle with the mouse.
+ .TP 5
++.B -u, --focused
++Use the currently focused window.
++.TP 5
+ .B -t, --thumb NUM
+ generate thumbnail too. NUM is the percentage of the original size for the
+ thumbnail to be.

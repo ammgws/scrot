@@ -1,3 +1,10 @@
+scrot (0.8-10) unstable; urgency=low
+
+  * Added a patch to automatically choose focused window (Closes: #245266). 
+  * New patch to add this function at he manpage. 
+
+ -- William Vera <billy@billy.com.mx>  Tue, 19 May 2009 09:27:27 -0500
+
 scrot (0.8-9) unstable; urgency=low
 
   * Changed the description on manpage (Closes: #469914).
