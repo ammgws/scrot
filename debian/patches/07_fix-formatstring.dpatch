@@ -1,0 +1,22 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 07_fix-formatstring.dpatch by George Danchev <danchev@spnet.net>
+##
+## DP: Prevent arbitrary long file names
+
+@DPATCH@
+diff -urNad scrot-0.8~/src/options.c scrot-0.8/src/options.c
+--- scrot-0.8~/src/options.c	2009-10-27 08:11:41.000000000 +0200
++++ scrot-0.8/src/options.c	2009-10-27 08:12:09.000000000 +0200
+@@ -124,6 +124,12 @@
+          if (!opt.output_file)
+          {
+             opt.output_file = argv[optind++];
++
++            if ( strlen(opt.output_file) > 256 ) {
++               printf("output filename too long.\n");
++               exit(EXIT_FAILURE);
++            }
++
+             if (opt.thumb)
+                opt.thumb_file = name_thumbnail(opt.output_file);
+          }

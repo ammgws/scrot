@@ -3,3 +3,5 @@
 003_descmanpage.dpatch
 04-focused.dpatch
 05-addfocusedmanpage.dpatch
+06_manpagespace.dpatch
+07_fix-formatstring.dpatch

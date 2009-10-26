@@ -1,3 +1,13 @@
+scrot (0.8-11) unstable; urgency=low
+
+  * Changed the Homepage field on control file (Closes: #547486). 
+  * Updated Standards Version to 3.8.1. 
+  * Added a patch to improve spacing in manual page (Closes: #549123).
+  * Added a README.source (dpatch).
+  * Added a patch to prevent arbitrary long file names (Closes: #354662).
+
+ -- William Vera <billy@billy.com.mx>  Sun, 25 Oct 2009 19:48:21 -0600
+
 scrot (0.8-10) unstable; urgency=low
 
   * Added a patch to automatically choose focused window (Closes: #245266). 

@@ -1,0 +1,18 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 06_manpagespace.dpatch by William Vera <billy@billy.com.mx>
+##
+## DP: Improve spacing in manual page.
+
+@DPATCH@
+diff -urNad scrot-0.8~/scrot.1 scrot-0.8/scrot.1
+--- scrot-0.8~/scrot.1	2001-01-11 11:43:06.000000000 -0600
++++ scrot-0.8/scrot.1	2009-10-25 19:55:38.000000000 -0600
+@@ -58,7 +58,7 @@
+ These options may be used to refer to the current date and time.
+ The second kind are internal to scrot and are prefixed by '$'
+ The following specifiers are recognised:
+-.br
++.PP
+ .B $f
+ image path/filename (ignored when used in the filename)
+ .br
