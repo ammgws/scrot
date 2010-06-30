@@ -5,3 +5,5 @@
 05-addfocusedmanpage.dpatch
 06_manpagespace.dpatch
 07_fix-formatstring.dpatch
+08_fix-beeping.dpatch
+09_fix-minusign.dpatch

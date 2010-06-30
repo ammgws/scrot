@@ -1,3 +1,16 @@
+scrot (0.8-12) unstable; urgency=low
+
+  * Added a patch to fix missing option for beep prevention.
+    (Closes: #586769) Thanks to Ibragimov Rinat
+  * Updated Standards Version to 3.9.0. 
+  * Updated debhelper version. 
+  * Added ${misc:Depends} in control file. 
+  * Added DM Upload Allowed in control file. 
+  * Switch to dpkg-source 3.0 (quilt) format. 
+  * Added a patch to fix a minus sign in a manpage. 
+
+ -- William Vera <billy@billy.com.mx>  Wed, 30 Jun 2010 10:00:05 -0500
+
 scrot (0.8-11) unstable; urgency=low
 
   * Changed the Homepage field on control file (Closes: #547486). 
