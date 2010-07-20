@@ -1,12 +1,7 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 07_fix-formatstring.dpatch by George Danchev <danchev@spnet.net>
-##
-## DP: Prevent arbitrary long file names
-
-@DPATCH@
-diff -urNad scrot-0.8~/src/options.c scrot-0.8/src/options.c
---- scrot-0.8~/src/options.c	2009-10-27 08:11:41.000000000 +0200
-+++ scrot-0.8/src/options.c	2009-10-27 08:12:09.000000000 +0200
+Author: George Danchev <danchev@spnet.net>
+Description: Prevent arbitrary long file names
+--- a/src/options.c
++++ b/src/options.c
 @@ -124,6 +124,12 @@
           if (!opt.output_file)
           {

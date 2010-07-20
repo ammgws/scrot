@@ -1,13 +1,7 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## fix-beeping.dpatch by Ibragimov Rinat <ibragimovrinat@mail.ru>
-##
-## DP: Fix missing option for beep prevention.
-
-@DPATCH@
-
-diff -ur scrot-0.8//scrot.1 scrot-0.8-mod//scrot.1
---- scrot-0.8//scrot.1	2010-06-22 15:11:11.457328956 +0400
-+++ scrot-0.8-mod//scrot.1	2010-06-22 15:19:20.449492469 +0400
+Author: Ibragimov Rinat <ibragimovrinat@mail.ru>
+Description: Fix missing option for beep prevention.
+--- a/scrot.1
++++ b/scrot.1
 @@ -49,6 +49,9 @@
  .B -t, --thumb NUM
  generate thumbnail too. NUM is the percentage of the original size for the
@@ -18,9 +12,8 @@ diff -ur scrot-0.8//scrot.1 scrot-0.8-mod//scrot.1
  .SH SPECIAL STRINGS
  Both the
  .B --exec
-diff -ur scrot-0.8//src/main.c scrot-0.8-mod//src/main.c
---- scrot-0.8//src/main.c	2010-06-22 15:11:11.445328233 +0400
-+++ scrot-0.8-mod//src/main.c	2010-06-22 15:20:59.480328999 +0400
+--- a/src/main.c
++++ b/src/main.c
 @@ -154,7 +154,7 @@
  {
    Imlib_Image im;
@@ -39,9 +32,8 @@ diff -ur scrot-0.8//src/main.c scrot-0.8-mod//src/main.c
      im = gib_imlib_create_image_from_drawable(root, 0, rx, ry, rw, rh, 1);
    }
    return im;
-diff -ur scrot-0.8//src/options.c scrot-0.8-mod//src/options.c
---- scrot-0.8//src/options.c	2010-06-22 15:11:11.465327358 +0400
-+++ scrot-0.8-mod//src/options.c	2010-06-22 15:22:59.740326693 +0400
+--- a/src/options.c
++++ b/src/options.c
 @@ -44,7 +44,7 @@
  static void
  scrot_parse_option_array(int argc, char **argv)
@@ -77,9 +69,8 @@ diff -ur scrot-0.8//src/options.c scrot-0.8-mod//src/options.c
             "\n" "  SPECIAL STRINGS\n"
             "  Both the --exec and filename parameters can take format specifiers\n"
             "  that are expanded by " PACKAGE " when encountered.\n"
-diff -ur scrot-0.8//src/options.h scrot-0.8-mod//src/options.h
---- scrot-0.8//src/options.h	2010-06-22 15:11:11.445328233 +0400
-+++ scrot-0.8-mod//src/options.h	2010-06-22 15:23:23.482587357 +0400
+--- a/src/options.h
++++ b/src/options.h
 @@ -35,6 +35,7 @@
     int focused;
     int quality;

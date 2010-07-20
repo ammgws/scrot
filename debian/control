@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: William Vera <billy@billy.com.mx>
 DM-Upload-Allowed: yes
 Standards-Version: 3.9.0
-Build-Depends: libimlib2-dev, giblib-dev, debhelper (>=7.0.50), autotools-dev, libtool
+Build-Depends: libimlib2-dev, giblib-dev, debhelper (>=7.0.50~), autotools-dev, libtool
 Homepage: http://freshmeat.net/projects/scrot
 
 Package: scrot

@@ -1,16 +1,9 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 04-focused.dpatch by James Cameron  <quozl@us.netrek.org>
-##
-## DP: src/options.c (scrot_parse_option_array): add --focused option.
-## DP: src/main.c (scrot_get_geometry, scrot_nice_clip): new functions
-##     for common code used by both selected and focused screenshot.
-## DP: src/main.c (scrot_grab_focused): new function to grab currently
-##      focused window after specified delay.
-
-@DPATCH@
-diff -u -r scrot-0.8~/src/options.h scrot-0.8/src/options.h
---- scrot-0.8~/src/options.h	2004-04-21 21:15:24.000000000 +1000
-+++ scrot-0.8~/src/options.h	2004-04-21 22:00:47.000000000 +1000
+Author: James Cameron <quozl@us.netrek.org>
+Description: src/options.c (scrot_parse_option_array): add --focused option.
+src/main.c (scrot_get_geometry, scrot_nice_clip): new functions
+src/main.c (scrot_grab_focused): new function to grab currently
+--- a/src/options.h
++++ b/src/options.h
 @@ -32,6 +32,7 @@
     int delay;
     int countdown;
@@ -19,9 +12,8 @@ diff -u -r scrot-0.8~/src/options.h scrot-0.8/src/options.h
     int quality;
     int border;
     int multidisp;
-diff -u -r scrot-0.8~/src/options.c scrot-0.8/src/options.c
---- scrot-0.8~/orig/options.c	2004-04-21 21:15:24.000000000 +1000
-+++ scrot-0.8/src/options.c	2004-04-21 22:00:32.000000000 +1000
+--- a/src/options.c
++++ b/src/options.c
 @@ -44,13 +44,15 @@
  static void
  scrot_parse_option_array(int argc, char **argv)
@@ -57,9 +49,8 @@ diff -u -r scrot-0.8~/src/options.c scrot-0.8/src/options.c
             "  -t, --thumb NUM           generate thumbnail too. NUM is the percentage\n"
             "                            of the original size for the thumbnail to be,\n"
             "                            or the geometry in percent, e.g. 50x60 or 80x20.\n"
-diff -u -r scrot-0.8~/src/scrot.h scrot-0.8/src/scrot.h
---- scrot-0.8~/src/scrot.h	2004-04-21 21:15:24.000000000 +1000
-+++ scrot-0.8/src/scrot.h	2004-04-21 22:00:42.000000000 +1000
+--- a/src/scrot.h
++++ b/src/scrot.h
 @@ -72,7 +72,10 @@
                      char *filename_im, char *filename_thumb);
  void scrot_do_delay(void);
@@ -71,9 +62,8 @@ diff -u -r scrot-0.8~/src/scrot.h scrot-0.8/src/scrot.h
  Window scrot_get_window(Display *display,Window window,int x,int y);
  Window scrot_get_client_window(Display * display, Window target);
  Window scrot_find_window_by_property(Display * display, const Window window,
-diff -u -r scrot-0.8~/src/main.c scrot-0.8/src/main.c
---- scrot-0.8~/src/main.c	2004-04-21 21:15:24.000000000 +1000
-+++ scrot-0.8/src/main.c	2004-04-21 22:01:27.000000000 +1000
+--- a/src/main.c
++++ b/src/main.c
 @@ -48,7 +48,9 @@
    }
  
@@ -148,14 +138,14 @@ diff -u -r scrot-0.8~/src/main.c scrot-0.8/src/main.c
 -      rw = attr.width;
 -      rh = attr.height;
 -      XTranslateCoordinates(disp, target, root, 0, 0, &rx, &ry, &child);
-+      if (!scrot_get_geometry(target, &rx, &ry, &rw, &rh)) return NULL;
-     }
+-    }
 -
 -    /* clip rectangle nicely */
 -    if (rx < 0) {
 -      rw += rx;
 -      rx = 0;
--    }
++      if (!scrot_get_geometry(target, &rx, &ry, &rw, &rh)) return NULL;
+     }
 -    if (ry < 0) {
 -      rh += ry;
 -      ry = 0;
