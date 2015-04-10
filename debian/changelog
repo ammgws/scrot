@@ -1,3 +1,32 @@
+scrot (0.8-14) experimental; urgency=medium
+
+  * New maintainer. Thanks to William Vera for your work over this package.
+      (Closes: #781959)
+  * Migrations:
+      - debian/copyright to format 1.0.
+      - DH level to 9.
+      - Using autoreconf.
+  * debian/control:
+      - Bumped Standards-Version to 3.9.6.
+      - Improved the long description.
+      - Removed the obsolete field DM-Upload-Allowed.
+      - Updated the Homepage field.
+  * debian/copyright:
+      - Updated all information.
+      - Using BSD-3-clause for debian/ directory.
+  * debian/patches/:
+      - Added fix-makefile patch to do not install unnecessary files.
+      - Renamed 003 patch to 03.
+      - Updated all headers in all patches.
+  * debian/README.source: removed (deprecated information).
+  * debian/rules:
+      - Added the variable DEB_BUILD_MAINT_OPTIONS to solve the issues shown
+        by blhc command.
+      - Removed some useless lines.
+  * debian/watch: updated.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Thu, 09 Apr 2015 21:32:57 -0300
+
 scrot (0.8-13) unstable; urgency=low
 
   * Changed patch system to 'quilt' 

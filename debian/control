@@ -1,18 +1,30 @@
 Source: scrot
 Section: graphics
 Priority: optional
-Maintainer: William Vera <billy@billy.com.mx>
-DM-Upload-Allowed: yes
-Standards-Version: 3.9.0
-Build-Depends: libimlib2-dev, giblib-dev, debhelper (>=7.0.50~), autotools-dev, libtool
-Homepage: http://freshmeat.net/projects/scrot
+Maintainer: Joao Eriberto Mota Filho <eriberto@debian.org>
+Standards-Version: 3.9.6
+Build-Depends: debhelper (>= 9),
+               autotools-dev,
+               dh-autoreconf,
+               giblib-dev,
+               libimlib2-dev,
+               libtool
+Homepage: http://linuxbrit.co.uk/scrot
 
 Package: scrot
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: command line screen capture utility
- scrot (SCReen shOT) is a simple commandline screen capture
- utility that uses imlib2 to grab and save images. Multiple 
- image formats are supported through imlib2's dynamic saver 
+ scrot (SCReen shOT) is a simple command line screen capture
+ utility that uses imlib2 to grab and save images. Multiple
+ image formats are supported through imlib2's dynamic saver
  modules.
-
+ .
+ Some features of the scrot:
+   - support to multiple image formats (JPG, PNG, GIF, etc.).
+   - optimization of the screen shots image quality.
+   - capture a specific window or a rectangular area on the
+     screen with the help of switch.
+ .
+ scrot also can be used to monitor a desktop PC in admin absent
+ and register unwanted activities.

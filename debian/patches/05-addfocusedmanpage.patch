@@ -1,8 +1,11 @@
-Author: William Vera <billy@billy.com.mx>
 Description: Add a new option in the man page (focused option).
---- a/scrot.1
-+++ b/scrot.1
-@@ -43,6 +43,9 @@
+Author: William Vera <billy@billy.com.mx>
+Last-Update: 2009-05-19
+Index: scrot-0.8/scrot.1
+===================================================================
+--- scrot-0.8.orig/scrot.1
++++ scrot-0.8/scrot.1
+@@ -43,6 +43,9 @@ For multiple heads, grab shot from each
  .B -s, --select
  Interactively select a window or rectangle with the mouse.
  .TP 5

@@ -1,11 +1,11 @@
 #!/usr/bin/make -f
-# Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
-#export DH_OPTIONS=-v
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 %:
-	dh  $@
+	dh  $@ --with autoreconf
 
-override_dh_auto_install:
-	$(MAKE) install prefix=$(CURDIR)/debian/scrot/usr
-	rm -rf $(CURDIR)/debian/scrot/usr/doc
+#override_dh_auto_install:
+#	$(MAKE) install prefix=$(CURDIR)/debian/scrot/usr
+#	rm -rf $(CURDIR)/debian/scrot/usr/doc

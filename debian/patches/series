@@ -1,6 +1,7 @@
+fix-makefile
 01_manpagefix.patch
 02_options.c.patch
-003_descmanpage.patch
+03_descmanpage.patch
 04-focused.patch
 05-addfocusedmanpage.patch
 06_manpagespace.patch

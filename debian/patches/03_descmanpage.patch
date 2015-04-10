@@ -1,7 +1,8 @@
-Index: scrot-0.8/scrot.1
-===================================================================
---- scrot-0.8.orig/scrot.1
-+++ scrot-0.8/scrot.1
+Description: Change the description on manpage.
+Author: William Vera <billy@billy.com.mx>
+Last-Update: 2009-05-13
+--- a/scrot.1
++++ b/scrot.1
 @@ -1,6 +1,6 @@
  .TH scrot 1 "Oct 26, 2000"
  .SH NAME

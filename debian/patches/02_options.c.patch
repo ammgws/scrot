@@ -1,8 +1,11 @@
-Author: William Vera <billy@billy.com.mx>
 Description: A little fix for wrong words.
---- a/src/options.c
-+++ b/src/options.c
-@@ -229,7 +229,7 @@
+Author: William Vera <billy@billy.com.mx>
+Last-Update: 2008-08-15
+Index: scrot-0.8/src/options.c
+===================================================================
+--- scrot-0.8.orig/src/options.c
++++ scrot-0.8/src/options.c
+@@ -229,7 +229,7 @@ show_usage(void)
             "                            low quality means high compression.\n"
             "  -m, --multidisp           For multiple heads, grab shot from each\n"
             "                            and join them together.\n"
@@ -11,7 +14,7 @@ Description: A little fix for wrong words.
             "                            with the mouse\n"
             "  -t, --thumb NUM           generate thumbnail too. NUM is the percentage\n"
             "                            of the original size for the thumbnail to be,\n"
-@@ -238,7 +238,7 @@
+@@ -238,7 +238,7 @@ show_usage(void)
             "  Both the --exec and filename parameters can take format specifiers\n"
             "  that are expanded by " PACKAGE " when encountered.\n"
             "  There are two types of format specifier. Characters preceded by a '%%'\n"
