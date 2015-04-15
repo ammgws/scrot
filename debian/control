@@ -10,6 +10,8 @@ Build-Depends: debhelper (>= 9),
                libimlib2-dev,
                libtool
 Homepage: http://linuxbrit.co.uk/scrot
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/scrot.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/scrot.git
 
 Package: scrot
 Architecture: any
