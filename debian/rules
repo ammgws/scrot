@@ -5,7 +5,3 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 %:
 	dh  $@ --with autoreconf
-
-#override_dh_auto_install:
-#	$(MAKE) install prefix=$(CURDIR)/debian/scrot/usr
-#	rm -rf $(CURDIR)/debian/scrot/usr/doc

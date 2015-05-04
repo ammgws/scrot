@@ -1,3 +1,10 @@
+scrot (0.8-16) unstable; urgency=medium
+
+  * Upload to unstable.
+  * debian/rules: removed some unused lines.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sun, 03 May 2015 23:33:01 -0300
+
 scrot (0.8-15) experimental; urgency=medium
 
   * debian/control: added the Vcs-* fields.
@@ -173,4 +180,3 @@ scrot (0.3-1) unstable; urgency=low
   * Initial release
 
  -- Laurence J. Lane <ljlane@debian.org>  Mon, 30 Oct 2000 20:11:13 -0500
-
