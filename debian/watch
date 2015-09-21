@@ -1,2 +1,5 @@
 version=3
 http://linuxbrit.co.uk/downloads/scrot-(\d\S+)\.tar\.(?:bz2|gz|xz)
+
+opts=dversionmangle=s/.*/0.No-Track/ \
+https://people.debian.org/~eriberto/ FakeWatchNoUpstreamTrackingForThisPackage-(\d\S+)\.gz
