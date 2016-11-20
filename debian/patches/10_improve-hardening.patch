@@ -1,0 +1,30 @@
+Description: improve the GCC hardening, fixing Makefile.am.
+Author: Joao Eriberto Mota Filho <eriberto@debian.org>
+Last-Update: 2016-11-20
+Index: scrot-0.8/Makefile.am
+===================================================================
+--- scrot-0.8.orig/Makefile.am
++++ scrot-0.8/Makefile.am
+@@ -5,7 +5,7 @@ AUTOMAKE_OPTIONS = 1.4 foreign
+ # A list of all the files in the current directory which can be regenerated
+ MAINTAINERCLEANFILES = Makefile.in scrot.spec
+ 
+-LDFLAGS           = -L/usr/X11R6/lib -L/usr/lib -L/usr/local/lib
++AM_LDFLAGS        = -L/usr/X11R6/lib -L/usr/lib -L/usr/local/lib
+ INCLUDES          = -I/usr/X11R6/include \
+ $(X_CFLAGS) -I$(prefix)/include -I$(includedir) -I.
+ 
+Index: scrot-0.8/src/Makefile.am
+===================================================================
+--- scrot-0.8.orig/src/Makefile.am
++++ scrot-0.8/src/Makefile.am
+@@ -1,7 +1,7 @@
+ # A list of all the files in the current directory which can be regenerated
+-MAINTAINERCLEANFILES = Makefile.in				
++MAINTAINERCLEANFILES = Makefile.in
+ 
+-LDFLAGS           = -L/usr/X11R6/lib
++AM_LDFLAGS        = -L/usr/X11R6/lib
+ INCLUDES          = -g -O3 -Wall -I/usr/X11R6/include \
+ $(X_CFLAGS) -I$(prefix)/include -I$(includedir) -I. \
+ -DPREFIX=\""$(prefix)"\" @GIBLIB_CFLAGS@

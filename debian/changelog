@@ -1,3 +1,27 @@
+scrot (0.8-18) unstable; urgency=medium
+
+  * Bumped DH level to 10.
+  * debian/control:
+      - Bumped Standards-Version to 3.9.8.
+      - Removed the Homepage field. It is offline.
+      - Removed unnecessary dependency autotools-dev.
+      - Updated the Vcs-* fields to use https instead of http and git.
+  * debian/copyright: updated the packaging copyright years.
+  * debian/patches/:
+      - 10_improve-hardening.patch: created to fix the GCC hardening.
+      - 11_fix-spelling-manpage.patch: created to fix some spelling
+        errors in manpage.
+      - fix-makefile: renamed to 09_fix-makefile.patch.
+      - Deleted the useless and duplicate 003_descmanpage.patch file.
+  * debian/rules: added the DEB_LDFLAGS_MAINT_APPEND variable to avoid an
+    unnecessary linking against a library.
+  * debian/watch:
+      - Bumped to version 4.
+      - Removed the extra source to avoid conflicts with uscan.
+      - Using NoSite instead of NoTracking.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sun, 20 Nov 2016 13:04:53 -0200
+
 scrot (0.8-17) unstable; urgency=medium
 
   * debian/README.Debian: added to explain about the use with cron.
@@ -96,7 +120,7 @@ scrot (0.8-8) unstable; urgency=low
 
   * New maintainer (Closes: #492502).
   * Updated Standards Version to 3.8.0
-  * Added autotool-dev as Build-Depend.
+  * Added autotools-dev as Build-Depend.
   * Added watch file.
   * Added a patch to fix a minor error on manpage.
   * Set auto update libtool at debian/rules.

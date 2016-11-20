@@ -2,20 +2,18 @@ Source: scrot
 Section: graphics
 Priority: optional
 Maintainer: Joao Eriberto Mota Filho <eriberto@debian.org>
-Standards-Version: 3.9.6
-Build-Depends: debhelper (>= 9),
-               autotools-dev,
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 10),
                dh-autoreconf,
                giblib-dev,
                libimlib2-dev,
                libtool
-Homepage: http://linuxbrit.co.uk/scrot
-Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/scrot.git
-Vcs-Git: git://anonscm.debian.org/collab-maint/scrot.git
+Vcs-Browser: https://anonscm.debian.org/git/collab-maint/scrot.git
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/scrot.git
 
 Package: scrot
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: command line screen capture utility
  scrot (SCReen shOT) is a simple command line screen capture
  utility that uses imlib2 to grab and save images. Multiple

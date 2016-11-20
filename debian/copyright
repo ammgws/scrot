@@ -3,7 +3,9 @@ Upstream-Name: scrot
 Source: http://linuxbrit.co.uk/scrot
 
 Files: *
-Copyright: 1999-2000 Tom Gilbert <tom@linuxbrit.co.uk, gilbertt@linuxbrit.co.uk, scrot_sucks@linuxbrit.co.uk>
+Copyright: 1999-2000 Tom Gilbert <tom@linuxbrit.co.uk,
+                                  gilbertt@linuxbrit.co.uk,
+                                  scrot_sucks@linuxbrit.co.uk>
 License: MIT-advertising
 
 Files: src/getopt.c
@@ -16,7 +18,7 @@ Comment: The GNU Library General Public License was replaced by LGPL.
 Files: debian/*
 Copyright: 2000-2006 Laurence J. Lane <ljlane@debian.org>
            2008-2010 William Vera <billy@billy.com.mx>
-           2015      Joao Eriberto Mota Filho <eriberto@debian.org>
+           2015-2016 Joao Eriberto Mota Filho <eriberto@debian.org>
 License: BSD-3-Clause
 
 License: MIT-advertising
