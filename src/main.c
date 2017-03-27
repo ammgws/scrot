@@ -224,8 +224,10 @@ scrot_sel_and_grab_image(void)
           if (btn_pressed) {
             if (rect_w) {
               /* re-draw the last rect to clear it */
-              XGrabServer(disp);
-              XDrawRectangle(disp, root, gc, rect_x, rect_y, rect_w, rect_h);
+              //XGrabServer(disp);
+              //XDrawRectangle(disp, root, gc, rect_x, rect_y, rect_w, rect_h);
+              //signed_x = ;
+              XCreateSimpleWindow(disp, root, rect_x, rect_y, rect_w, rect_h, 0, 0, 0);
             } else {
               /* Change the cursor to show we're selecting a region */
               XChangeActivePointerGrab(disp,
