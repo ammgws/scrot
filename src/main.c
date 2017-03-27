@@ -224,6 +224,7 @@ scrot_sel_and_grab_image(void)
           if (btn_pressed) {
             if (rect_w) {
               /* re-draw the last rect to clear it */
+              XGrabServer(disp);
               XDrawRectangle(disp, root, gc, rect_x, rect_y, rect_w, rect_h);
             } else {
               /* Change the cursor to show we're selecting a region */
