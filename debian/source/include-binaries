@@ -1,0 +1,6 @@
+src/getopt.o
+src/getopt1.o
+src/imlib.o
+src/main.o
+src/options.o
+src/scrot

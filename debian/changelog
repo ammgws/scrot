@@ -1,0 +1,214 @@
+scrot (0.8-18) unstable; urgency=medium
+
+  * Bumped DH level to 10.
+  * debian/control:
+      - Bumped Standards-Version to 3.9.8.
+      - Removed the Homepage field. It is offline.
+      - Removed unnecessary dependency autotools-dev.
+      - Updated the Vcs-* fields to use https instead of http and git.
+  * debian/copyright: updated the packaging copyright years.
+  * debian/patches/:
+      - 10_improve-hardening.patch: created to fix the GCC hardening.
+      - 11_fix-spelling-manpage.patch: created to fix some spelling
+        errors in manpage.
+      - fix-makefile: renamed to 09_fix-makefile.patch.
+      - Deleted the useless and duplicate 003_descmanpage.patch file.
+  * debian/rules: added the DEB_LDFLAGS_MAINT_APPEND variable to avoid an
+    unnecessary linking against a library.
+  * debian/watch:
+      - Bumped to version 4.
+      - Removed the extra source to avoid conflicts with uscan.
+      - Using NoSite instead of NoTracking.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sun, 20 Nov 2016 13:04:53 -0200
+
+scrot (0.8-17) unstable; urgency=medium
+
+  * debian/README.Debian: added to explain about the use with cron.
+  * debian/watch: added a fake site to explain about the current status
+      of the original upstream homepage.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Mon, 21 Sep 2015 17:09:45 -0300
+
+scrot (0.8-16) unstable; urgency=medium
+
+  * Upload to unstable.
+  * debian/rules: removed some unused lines.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Sun, 03 May 2015 23:33:01 -0300
+
+scrot (0.8-15) experimental; urgency=medium
+
+  * debian/control: added the Vcs-* fields.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Wed, 15 Apr 2015 09:43:56 -0300
+
+scrot (0.8-14) experimental; urgency=medium
+
+  * New maintainer. Thanks to William Vera for your work over this package.
+      (Closes: #781959)
+  * Migrations:
+      - debian/copyright to format 1.0.
+      - DH level to 9.
+      - Using autoreconf.
+  * debian/control:
+      - Bumped Standards-Version to 3.9.6.
+      - Improved the long description.
+      - Removed the obsolete field DM-Upload-Allowed.
+      - Updated the Homepage field.
+  * debian/copyright:
+      - Updated all information.
+      - Using BSD-3-clause for debian/ directory.
+  * debian/patches/:
+      - Added fix-makefile patch to do not install unnecessary files.
+      - Renamed 003 patch to 03.
+      - Updated all headers in all patches.
+  * debian/README.source: removed (deprecated information).
+  * debian/rules:
+      - Added the variable DEB_BUILD_MAINT_OPTIONS to solve the issues shown
+        by blhc command.
+      - Removed some useless lines.
+  * debian/watch: updated.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Thu, 09 Apr 2015 21:32:57 -0300
+
+scrot (0.8-13) unstable; urgency=low
+
+  * Changed patch system to 'quilt' 
+
+ -- William Vera <billy@billy.com.mx>  Tue, 20 Jul 2010 16:32:55 -0500
+
+scrot (0.8-12) unstable; urgency=low
+
+  * Added a patch to fix missing option for beep prevention.
+    (Closes: #586769) Thanks to Ibragimov Rinat
+  * Updated Standards Version to 3.9.0. 
+  * Updated debhelper version. 
+  * Added ${misc:Depends} in control file. 
+  * Added DM Upload Allowed in control file. 
+  * Switch to dpkg-source 3.0 (quilt) format. 
+  * Added a patch to fix a minus sign in a manpage. 
+
+ -- William Vera <billy@billy.com.mx>  Wed, 30 Jun 2010 10:00:05 -0500
+
+scrot (0.8-11) unstable; urgency=low
+
+  * Changed the Homepage field on control file (Closes: #547486). 
+  * Updated Standards Version to 3.8.1. 
+  * Added a patch to improve spacing in manual page (Closes: #549123).
+  * Added a README.source (dpatch).
+  * Added a patch to prevent arbitrary long file names (Closes: #354662).
+
+ -- William Vera <billy@billy.com.mx>  Sun, 25 Oct 2009 19:48:21 -0600
+
+scrot (0.8-10) unstable; urgency=low
+
+  * Added a patch to automatically choose focused window (Closes: #245266). 
+  * New patch to add this function at he manpage. 
+
+ -- William Vera <billy@billy.com.mx>  Tue, 19 May 2009 09:27:27 -0500
+
+scrot (0.8-9) unstable; urgency=low
+
+  * Changed the description on manpage (Closes: #469914).
+  * Updated the Standards-Version to 3.8.1.
+  * Fixed deprecated dh_clean -k in debian/rules file.
+
+ -- William Vera <billy@billy.com.mx>  Wed, 13 May 2009 06:48:15 -0500
+
+scrot (0.8-8) unstable; urgency=low
+
+  * New maintainer (Closes: #492502).
+  * Updated Standards Version to 3.8.0
+  * Added autotools-dev as Build-Depend.
+  * Added watch file.
+  * Added a patch to fix a minor error on manpage.
+  * Set auto update libtool at debian/rules.
+  * Deleted CDBS from control file.
+  * Added a patch to fix options.c.
+
+ -- William Vera <billy@billy.com.mx>  Fri, 15 Aug 2008 00:26:13 -0500
+
+scrot (0.8-7) unstable; urgency=low
+
+  * removed build dependency on xlibs-dev
+
+ -- Laurence J. Lane <ljlane@debian.org>  Mon,  9 Jan 2006 00:10:21 -0500
+
+scrot (0.8-6) unstable; urgency=low
+
+  * corrected typos. Reported by Martin Pool. Thanks. Closes: #233835
+  * removed "(s)" from debian/copyright, lintian warning
+
+ -- Laurence J. Lane <ljlane@debian.org>  Fri, 20 Feb 2004 13:12:04 -0500
+
+scrot (0.8-5) unstable; urgency=low
+
+  * removed -lfreetype and other extra linker flags
+  * update to Standards-Version: 3.6.1.0
+
+ -- Laurence J. Lane <ljlane@debian.org>  Tue, 28 Oct 2003 20:26:39 -0500
+
+scrot (0.8-4) unstable; urgency=low
+
+  * src/Makefile*: replace @IMLIB2LIBS@ and @GIBLIBS@ with -lgiblib
+
+ -- Laurence J. Lane <ljlane@debian.org>  Tue, 28 Oct 2003 19:31:37 -0500
+
+scrot (0.8-3) unstable; urgency=low
+
+  * src/Makefile.in: strip -ttf from scrot_LDADD, temp hack for mips*
+
+ -- Laurence J. Lane <ljlane@debian.org>  Mon, 20 Oct 2003 23:13:50 -0400
+
+scrot (0.8-2) unstable; urgency=low
+
+  * shooting rubberbands at arm, mips and mipsel build failures
+
+ -- Laurence J. Lane <ljlane@debian.org>  Sun, 19 Oct 2003 14:00:48 -0400
+
+scrot (0.8-1) unstable; urgency=low
+
+  * New upstream release
+  * converted to CDBS 
+
+ -- Laurence J. Lane <ljlane@debian.org>  Fri, 26 Sep 2003 00:03:06 -0400
+
+scrot (0.7-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Laurence J. Lane <ljlane@debian.org>  Fri, 28 Feb 2003 00:23:01 -0500
+
+scrot (0.6-2) unstable; urgency=low
+
+  * maintenance update: debhelper version, standards version, etc
+
+ -- Laurence J. Lane <ljlane@debian.org>  Fri, 22 Nov 2002 04:00:16 -0500
+
+scrot (0.6-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/changelog: removed user emacs mode settings
+
+ -- Laurence J. Lane <ljlane@debian.org>  Mon, 17 Dec 2001 09:27:48 -0500
+
+scrot (0.5-1) unstable; urgency=low
+
+  * new upstream release
+  * updated package description, Closes: #93823
+  * changed section from x11 to graphics
+
+ -- Laurence J. Lane <ljlane@debian.org>  Wed,  2 May 2001 21:40:26 -0400
+
+scrot (0.3-2) unstable; urgency=low
+
+  * Build-Depends typo corrected, closes: #77179 
+
+ -- Laurence J. Lane <ljlane@debian.org>  Thu, 16 Nov 2000 10:27:21 -0500
+
+scrot (0.3-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Laurence J. Lane <ljlane@debian.org>  Mon, 30 Oct 2000 20:11:13 -0500
