@@ -374,14 +374,18 @@ scrot_sel_and_grab_image(void)
             }
             /* draw rectangle */
             XDrawRectangle(disp, root, gc, rect_x, rect_y, rect_w, rect_h);
-	          XFlush(disp);
+            XFlush(disp);
           }
           break;
         case ButtonPress:
-          printf("clicked");
           btn_pressed = 1;
           rx = ev.xbutton.x;
           ry = ev.xbutton.y;
+          target =
+            scrot_get_window(disp, ev.xbutton.subwindow, ev.xbutton.x,
+                             ev.xbutton.y);
+          if (target == None)
+            target = root;
           break;
         case ButtonRelease:
           done = 1;
@@ -409,12 +413,10 @@ scrot_sel_and_grab_image(void)
         && ((errno == ENOMEM) || (errno == EINVAL) || (errno == EBADF)))
       gib_eprintf("Connection to X display lost");
   }
-  
   if (rect_w) {
     XDrawRectangle(disp, root, gc, rect_x, rect_y, rect_w, rect_h);
     XFlush(disp);
   }
-  
   XUngrabPointer(disp, CurrentTime);
   XUngrabKeyboard(disp, CurrentTime);
   XFreeCursor(disp, cursor);
@@ -446,8 +448,7 @@ scrot_sel_and_grab_image(void)
       /* get geometry of window and use that */
       /* get windowmanager frame of window */
       if (target != root) {
-        unsigned int d;
-	      int x;
+        unsigned int d, x;
         int status;
 
         status = XGetGeometry(disp, target, &root, &x, &x, &d, &d, &d, &d);
@@ -496,7 +497,6 @@ scrot_sel_and_grab_image(void)
   }
   return im;
 }
-
 Window
 scrot_get_window(Display * display,
                  Window window,
