@@ -73,6 +73,7 @@ void scrot_exec_app(Imlib_Image image, struct tm *tm,
 void scrot_do_delay(void);
 Imlib_Image scrot_sel_and_grab_image(void);
 void scrot_sel_area(int *x, int *y, int *w, int *h);
+Imlib_Image ammtest(void);
 Window scrot_get_window(Display *display,Window window,int x,int y);
 Window scrot_get_client_window(Display * display, Window target);
 Window scrot_find_window_by_property(Display * display, const Window window,

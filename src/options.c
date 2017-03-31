@@ -44,7 +44,7 @@ init_parse_options(int argc, char **argv)
 static void
 scrot_parse_option_array(int argc, char **argv)
 {
-   static char stropts[] = "bcd:e:hmq:st:v+:";
+   static char stropts[] = "abcd:e:hmq:st:v+:";
    static struct option lopts[] = {
       /* actions */
       {"help", 0, 0, 'h'},                  /* okay */
@@ -53,6 +53,7 @@ scrot_parse_option_array(int argc, char **argv)
       {"select", 0, 0, 's'},
       {"border", 0, 0, 'b'},
       {"multidisp", 0, 0, 'm'},
+      {"amm", 0, 0, 'a'},
       /* toggles */
       {"thumb", 1, 0, 't'},
       {"delay", 1, 0, 'd'},
@@ -73,6 +74,9 @@ scrot_parse_option_array(int argc, char **argv)
            break;
         case 'h':
            show_usage();
+           break;
+        case 'a':
+           opt.amm = 1;
            break;
         case 'v':
            show_version();

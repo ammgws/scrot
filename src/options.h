@@ -32,6 +32,7 @@ struct __scrotoptions
    int delay;
    int countdown;
    int select;
+   int amm;
    int quality;
    int border;
    int multidisp;

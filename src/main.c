@@ -50,6 +50,9 @@ main(int argc,
 
   if (opt.select)
     image = scrot_sel_and_grab_image();
+  else if (opt.amm) {
+    image = ammtest();
+  }
   else {
     scrot_do_delay();
     if (opt.multidisp) {
@@ -170,6 +173,130 @@ scrot_exec_app(Imlib_Image image, struct tm *tm,
   exit(0);
 }
 
+Imlib_Image ammtest(void)
+{
+  Imlib_Image im = NULL;
+  int done = 0, btn_pressed = 0;
+  int rx = 0, ry = 0, rw = 0, rh = 0;
+  GC gc;
+  XGCValues gcval;
+  Window win;
+
+  /*
+  // for debugging
+  int screen_num;
+  screen_num = DefaultScreen(disp);
+  unsigned int display_width, display_height;
+  display_width = DisplayWidth(disp, screen_num);
+  display_height = DisplayHeight(disp, screen_num);
+  printf("Screen no: %d\n", screen_num);
+  printf("%d x %d\n", display_width, display_height);
+  Atom cmAtom = XInternAtom(disp, "_NET_WM_CM_S0", 0);
+  Window cmOwner = XGetSelectionOwner(disp, cmAtom);
+  printf("Composite manager window: %lu\n", cmOwner);
+  */
+ 
+  // preparation for creating window
+  int border_width = 0;
+  XVisualInfo vinfo;
+  XMatchVisualInfo(disp, DefaultScreen(disp), 32, TrueColor, &vinfo);
+  XSetWindowAttributes attr;
+  attr.colormap = XCreateColormap(disp, DefaultRootWindow(disp), vinfo.visual, AllocNone);
+  attr.border_pixel = 0;
+  attr.background_pixel = 0;
+  attr.override_redirect = 1;
+  win = XCreateWindow(disp, root, 0, 0, 1, 1, border_width, vinfo.depth, InputOutput, vinfo.visual,
+                      CWColormap | CWBorderPixel | CWOverrideRedirect | CWBackPixel, &attr);
+  XSelectInput(disp, win, StructureNotifyMask);
+  Atom wm_delete_window = XInternAtom(disp, "WM_DELETE_WINDOW", 0);
+  XSetWMProtocols(disp, win, &wm_delete_window, 1);
+
+  // create graphics context for drawing rectangle
+  gcval.foreground = XBlackPixel(disp, 0);
+  gcval.plane_mask = gcval.foreground;
+  gcval.function = GXcopy;
+  gcval.subwindow_mode = IncludeInferiors; /* need this otherwise rectangle won't show */
+  gc = XCreateGC(disp, root, GCFunction | GCForeground | GCSubwindowMode, &gcval);
+
+  Cursor cursor, cursor2;
+  cursor = XCreateFontCursor(disp, XC_left_ptr);
+  cursor2 = XCreateFontCursor(disp, XC_lr_angle);
+
+  if ((XGrabPointer
+       (disp, root, False,
+        ButtonMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync,
+        GrabModeAsync, root, cursor, CurrentTime) != GrabSuccess))
+    gib_eprintf("couldn't grab pointer:");
+
+  XEvent ev; 
+  while (1)
+  {
+    while (!done && XPending(disp))
+    {
+      XNextEvent(disp, &ev);
+      switch(ev.type) {
+        case ButtonPress:
+          btn_pressed = 1;
+          rx = ev.xbutton.x;
+          ry = ev.xbutton.y;
+          /* Move window to where user clicked and make window viewable */
+          XMoveResizeWindow(disp, win, rx, ry, 1, 1);
+          XMapWindow(disp, win);
+          break;
+        case MotionNotify:
+          if (btn_pressed) {
+            /* Change the cursor to show we're selecting a region */
+            XChangeActivePointerGrab(disp,
+                                     ButtonMotionMask | ButtonReleaseMask,
+                                     cursor2, CurrentTime);
+
+            rw = ev.xmotion.x - rx;
+            rh = ev.xmotion.y - ry;
+
+            if (rw <= 0) {
+              rw = 1;
+            }
+            if (rh <= 0) {
+              rh = 1;
+            }
+
+            /*
+            // for debugging
+            printf("sx %d, sy: %d\n", rx, ry);
+            printf("x %d, y: %d\n", ev.xmotion.x, ev.xmotion.y);
+            printf("w %d, h: %d\n", rw, rh);
+            */
+            XMoveResizeWindow(disp, win, rx, ry, rw+1, rh+1);
+          }
+          break;
+        case ButtonRelease:
+          done = 1;
+          break;
+        default:
+          break;
+      }
+    }
+    if (done)
+      break;
+
+    XDrawRectangle(disp, root, gc, rx, ry, rw+1, rh+1);
+    XFlush(disp);
+  }
+
+  if (done < 2) {
+    scrot_do_delay();
+    im = gib_imlib_create_image_from_drawable(root, 0, rx+1, ry+1, rw-1, rh-1, 1);
+  }
+
+  XUngrabPointer(disp, CurrentTime);
+  XFreeGC(disp, gc);
+  XDestroyWindow(disp, win);
+  XCloseDisplay(disp);
+
+  return im;
+}
+
+
 Imlib_Image
 scrot_sel_and_grab_image(void)
 {
@@ -224,10 +351,7 @@ scrot_sel_and_grab_image(void)
           if (btn_pressed) {
             if (rect_w) {
               /* re-draw the last rect to clear it */
-              //XGrabServer(disp);
-              //XDrawRectangle(disp, root, gc, rect_x, rect_y, rect_w, rect_h);
-              //signed_x = ;
-              XCreateSimpleWindow(disp, root, rect_x, rect_y, rect_w, rect_h, 0, 0, 0);
+              XDrawRectangle(disp, root, gc, rect_x, rect_y, rect_w, rect_h);
             } else {
               /* Change the cursor to show we're selecting a region */
               XChangeActivePointerGrab(disp,
@@ -250,18 +374,14 @@ scrot_sel_and_grab_image(void)
             }
             /* draw rectangle */
             XDrawRectangle(disp, root, gc, rect_x, rect_y, rect_w, rect_h);
-            XFlush(disp);
+	          XFlush(disp);
           }
           break;
         case ButtonPress:
+          printf("clicked");
           btn_pressed = 1;
           rx = ev.xbutton.x;
           ry = ev.xbutton.y;
-          target =
-            scrot_get_window(disp, ev.xbutton.subwindow, ev.xbutton.x,
-                             ev.xbutton.y);
-          if (target == None)
-            target = root;
           break;
         case ButtonRelease:
           done = 1;
@@ -289,10 +409,12 @@ scrot_sel_and_grab_image(void)
         && ((errno == ENOMEM) || (errno == EINVAL) || (errno == EBADF)))
       gib_eprintf("Connection to X display lost");
   }
+  
   if (rect_w) {
     XDrawRectangle(disp, root, gc, rect_x, rect_y, rect_w, rect_h);
     XFlush(disp);
   }
+  
   XUngrabPointer(disp, CurrentTime);
   XUngrabKeyboard(disp, CurrentTime);
   XFreeCursor(disp, cursor);
@@ -324,7 +446,8 @@ scrot_sel_and_grab_image(void)
       /* get geometry of window and use that */
       /* get windowmanager frame of window */
       if (target != root) {
-        unsigned int d, x;
+        unsigned int d;
+	      int x;
         int status;
 
         status = XGetGeometry(disp, target, &root, &x, &x, &d, &d, &d, &d);
