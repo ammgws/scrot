@@ -177,7 +177,7 @@ Imlib_Image ammtest(void)
 {
   Imlib_Image im = NULL;
   int done = 0, btn_pressed = 0;
-  int rx = 0, ry = 0, rw = 0, rh = 0;
+  int sx = 0, sy = 0, rx = 0, ry = 0, rw = 0, rh = 0;
   GC gc;
   XGCValues gcval;
   Window win;
@@ -237,10 +237,12 @@ Imlib_Image ammtest(void)
       switch(ev.type) {
         case ButtonPress:
           btn_pressed = 1;
-          rx = ev.xbutton.x;
-          ry = ev.xbutton.y;
+          sx = ev.xbutton.x;
+          rx = sx;
+          sy = ev.xbutton.y;
+          ry = sy;
           /* Move window to where user clicked and make window viewable */
-          XMoveResizeWindow(disp, win, rx, ry, 1, 1);
+          XMoveResizeWindow(disp, win, sx, sy, 1, 1);
           XMapWindow(disp, win);
           break;
         case MotionNotify:
@@ -250,22 +252,30 @@ Imlib_Image ammtest(void)
                                      ButtonMotionMask | ButtonReleaseMask,
                                      cursor2, CurrentTime);
 
-            rw = ev.xmotion.x - rx;
-            rh = ev.xmotion.y - ry;
-
-            if (rw <= 0) {
-              rw = 1;
+            if (ev.xmotion.x <= sx) {
+              rx = ev.xmotion.x;
+              rw = sx-ev.xmotion.x;
             }
-            if (rh <= 0) {
-              rh = 1;
+            else {
+              rx = sx;
+              rw = ev.xmotion.x-sx;
+            }
+            if (ev.xmotion.y <= sy) {
+              ry = ev.xmotion.y;
+              rh = sy-ev.xmotion.y;
+            }
+            else {
+              ry = sy;
+              rh = ev.xmotion.y-sy;
             }
 
             /*
             // for debugging
-            printf("sx %d, sy: %d\n", rx, ry);
+            printf("rx %d, ry: %d\n", rx, ry);
             printf("x %d, y: %d\n", ev.xmotion.x, ev.xmotion.y);
-            printf("w %d, h: %d\n", rw, rh);
+            printf("rw %d, rh: %d\n", rw, rh);
             */
+            
             XMoveResizeWindow(disp, win, rx, ry, rw+1, rh+1);
           }
           break;
