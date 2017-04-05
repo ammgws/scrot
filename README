@@ -1,3 +1,7 @@
+20170327
+Edited scrot v18 from Debian repo to fix the rectangle glitch issue when using scrot to select an area (see issue #1).
+
+
 Compile:
 
 $ ./configure
